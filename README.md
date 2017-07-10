@@ -13,7 +13,7 @@
 More information for the dissemination of oneM2M-Application-AndroidSample can be found [here](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki/Dissemination-of-oneM2M-Application-AndroidSample).
 
 ## **Wiki Page**
-Visit [wiki homepage](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki) for more guide information and here is a quick link for [oneM2M-Application-AndroidSample User Guide](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/doc/oneM2M-Application-AndroidSample_User_Guide_ver0_5.pdf)!!
+Visit [wiki homepage](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki) for more guide information and here is a quick link for [oneM2M-Application-AndroidSample User Guide](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/blob/master/doc/oneM2M-Application-AndroidSample_User_Guide_ver0_5.pdf)!!
 
 ## **[Licenses](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/LICENSE)**
 
