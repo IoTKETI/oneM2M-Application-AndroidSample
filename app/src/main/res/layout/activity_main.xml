@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="#fffeeb">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnRetrieve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/btn_co2"
+                android:layout_gravity="center_horizontal|start"
+                android:layout_weight="6.60" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/switch_mqtt"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:textColor="#0019fd"
+                android:textAlignment="center"
+                android:text="@string/btn_switch"
+                android:layout_gravity="end" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollViewText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="#575c72">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textViewData"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/textview_about"
+                    android:textColor="#fdfcfc" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ToggleButton
+                android:id="@+id/btnControl_Green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textOff="@string/btn_green_off"
+                android:textOn="@string/btn_green_on"
+                android:textColor="#356e4a"
+                android:textColorHighlight="#b34444"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:layout_gravity="start" />
+
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnControl_Blue"
+                android:layout_weight="1"
+                android:textOff="@string/btn_blue_off"
+                android:textOn="@string/btn_blue_on"
+                android:textColor="#275de6"
+                android:textColorHighlight="#fa0505"
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:layout_gravity="end" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
