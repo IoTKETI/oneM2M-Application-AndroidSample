@@ -7,10 +7,8 @@
 
 - The **oneM2M-Application-AndroidSample** is developed based on open source [Android Studio](https://developer.android.com/studio/index.html) for oneM2M service application.
 
-## **[Dissemination](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki/Dissemination-of-oneM2M-Application-AndroidSample)**
+## **[Dissemination](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki/)**
 - We prepare and upload oneM2M-Application-AndroidSample tutorial video into webinar series
-
-More information for the dissemination of oneM2M-Application-AndroidSample can be found [here](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki/Dissemination-of-oneM2M-Application-AndroidSample).
 
 ## **Wiki Page**
 Visit [wiki homepage](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki) for more guide information and here is a quick link for [oneM2M-Application-AndroidSample User Guide](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/blob/master/doc/oneM2M-Application-AndroidSample_User_Guide_ver0_5.pdf)!!
