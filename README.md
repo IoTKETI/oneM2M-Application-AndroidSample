@@ -3,7 +3,9 @@
 
 ## **Introduction**
 - **oneM2M-Application-AndroidSample** project is a oneM2M Service Application for Android.
-- The project aims to develop and distribute an open source oneM2M Service Application project and associated user manuals.    
+- The project aims to develop and distribute an open source oneM2M Service Application project and associated developer guide.
+- It is working base on oneM2M HTTP RESTful API and MQTT Message.
+- This queries the co2 sensor value and controls the led actuator.
 
 - The **oneM2M-Application-AndroidSample** is developed based on open source [Android Studio](https://developer.android.com/studio/index.html) for oneM2M service application.
 
