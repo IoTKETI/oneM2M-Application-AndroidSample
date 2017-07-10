@@ -2,10 +2,10 @@
  **Welcome to open source oneM2M-Application-AndroidSample project.**
 
 ## **Introduction**
-- **oneM2M-Application-AndroidSample** project is a oneM2M Service Application for Android Application.
-- The project aims to develop and distribute an open source oneM2M Service Applcation project and associated user manuals.    
+- **oneM2M-Application-AndroidSample** project is a oneM2M Service Application for Android.
+- The project aims to develop and distribute an open source oneM2M Service Application project and associated user manuals.    
 
-- The **oneM2M-Application-AndroidSample** tool is developed based on open source [Adndroid Studio](https://developer.android.com/studio/index.html) for oneM2M service application. 
+- The **oneM2M-Application-AndroidSample** tool is developed based on open source [Android Studio](https://developer.android.com/studio/index.html) for oneM2M service application.
 
 ## **[Dissemination](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki/Dissemination-of-oneM2M-Application-AndroidSample)**
 - We prepare and upload oneM2M-Application-AndroidSample tutorial video into webinar series
