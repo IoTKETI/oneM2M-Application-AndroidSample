@@ -15,14 +15,6 @@
 ## **Wiki Page**
 Visit [wiki homepage](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki) for more guide information and here is a quick link for [oneM2M-Application-AndroidSample User Guide](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/blob/master/doc/oneM2M-Application-AndroidSample_User_Guide_ver0_5.pdf)!!
 
-## **[Licenses](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/LICENSE)**
-
-- [BSD 3-Clause License](http://www.iotocean.org/license/) ([OCEAN](http://www.iotocean.org/main/))
-
-
-## **Members Logo**
-  ![KETI logo](https://github.com/IoTKETI/oneM2MTester/blob/master/doc/Partnership/KETI_logo.png) 
-
 ## **Latest News**
 [2017 Mar]
 - oneM2M-Application-AndroidSample version 0.5 !! 
