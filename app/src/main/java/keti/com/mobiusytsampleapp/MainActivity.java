@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     private static AE ae = new AE();
     private static String TAG = "MainActivity";
     private String MQTTPort = "1883";
-    private String ServiceAEName = "ae-edu1";
+    private String ServiceAEName = "ae-edu1004";
     private String MQTT_Req_Topic = "";
     private String MQTT_Resp_Topic = "";
     private MqttAndroidClient mqttClient = null;
@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     }
     /* AE Create for Androdi AE */
     public void GetAEInfo() {
-        csebase.setInfo("192.168.0.168","7579","mobius-yt","1883");
-        //csebase.setInfo("203.253.128.151","7579","mobius-yt","1883");
+        //csebase.setInfo("192.168.0.42","7579","mobius-yt","1883");
+        csebase.setInfo("203.253.128.161","7579","mobius-yt","1883");
         // AE Create for Android AE
         ae.setAppName("ncubeapp");
         aeCreateRequest aeCreate = new aeCreateRequest();
