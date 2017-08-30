@@ -5,8 +5,8 @@
     <string name="title" translatable="false">Mobius Yellow Turtle 디바이스 접속</string>
     <string name="switchbnt" translatable="false">MQTT CO2조회</string>
     <string name="btn_switch" translatable="false">MQTT Co2 조회</string>
-    <string name="btn_green_off">Green Off</string>
-    <string name="btn_green_on">Green On</string>
-    <string name="btn_blue_off">Blue Off</string>
+    <string name="btn_red_on">Red on</string>
+    <string name="btn_green_on">Green on</string>
+    <string name="btn_all_off">Led Off</string>
     <string name="btn_blue_on">Blue On</string>
 </resources>
