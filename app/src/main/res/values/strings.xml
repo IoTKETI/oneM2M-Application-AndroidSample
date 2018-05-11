@@ -1,12 +1,11 @@
 <resources>
-    <string name="app_name" translatable="false">Mobius Yellow Turtle SampleApp</string>
+    <string name="app_name" translatable="false">Mobius SampleApp</string>
     <string name="textview_about" translatable="false">전자부품연구원에서 교육용으로 제공하는 어플리케이션으로써 다음과 같은 기능을 수행한다\r\n\r\n\r\n   1. CO2 센서 값 조회(수동, 자동-MQTT)\r\n\r\n   2. LED Green, Blue on/off 제어 전송</string>
     <string name="btn_co2" translatable="false">CO2 조회</string>
     <string name="title" translatable="false">Mobius Yellow Turtle 디바이스 접속</string>
-    <string name="switchbnt" translatable="false">MQTT CO2조회</string>
     <string name="btn_switch" translatable="false">MQTT Co2 조회</string>
-    <string name="btn_red_on">Red on</string>
-    <string name="btn_green_on">Green on</string>
-    <string name="btn_all_off">Led Off</string>
+    <string name="btn_green_off">Green Off</string>
+    <string name="btn_green_on">Green On</string>
+    <string name="btn_blue_off">Blue Off</string>
     <string name="btn_blue_on">Blue On</string>
 </resources>

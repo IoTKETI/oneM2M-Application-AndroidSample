@@ -5,11 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -46,11 +43,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     private static AE ae = new AE();
     private static String TAG = "MainActivity";
     private String MQTTPort = "1883";
-    private String ServiceAEName = "base1004";
+    private String ServiceAEName = "ae-edu1";
     private String MQTT_Req_Topic = "";
     private String MQTT_Resp_Topic = "";
     private MqttAndroidClient mqttClient = null;
-    Spinner spinner;
 
     // Main
     public MainActivity() {
@@ -72,13 +68,12 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         btnControl_Green.setOnClickListener(this);
         btnControl_Blue.setOnClickListener(this);
         // Create AE and Get AEID
-
         GetAEInfo();
     }
-
+    /* AE Create for Androdi AE */
     public void GetAEInfo() {
-        //csebase.setInfo("192.168.0.42","7579","mobius-yt","1883");
-        csebase.setInfo("203.253.128.161","7579","Mobius","1883");
+        csebase.setInfo("192.168.0.135","7579","Mobius","1883");
+        //csebase.setInfo("203.253.128.151","7579","Mobius","1883");
         // AE Create for Android AE
         ae.setAppName("ncubeapp");
         aeCreateRequest aeCreate = new aeCreateRequest();
@@ -88,10 +83,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                     public void run() {
                         Log.d(TAG, "** AE Create ResponseCode[" + msg +"]");
                         if( Integer.parseInt(msg) == 201 ){
-                            MQTT_Req_Topic = "/oneM2M/req/Mobius/"+ae.getAEid()+"_sub"+"/#";
-                            MQTT_Resp_Topic = "/oneM2M/resp/Mobius/"+ae.getAEid()+"_sub"+"/xml";
-                            //Log.d(TAG, "RTopic["+ MQTT_Req_Topic+"]");
-                            //Log.d(TAG, "ResTopic["+ MQTT_Resp_Topic+"]");
+                            MQTT_Req_Topic = "/oneM2M/req/Mobius2/"+ae.getAEid()+"_sub"+"/#";
+                            MQTT_Resp_Topic = "/oneM2M/resp/Mobius2/"+ae.getAEid()+"_sub"+"/json";
+                            Log.d(TAG, "ReqTopic["+ MQTT_Req_Topic+"]");
+                            Log.d(TAG, "ResTopic["+ MQTT_Resp_Topic+"]");
                         }
                         else { // If AE is Exist , GET AEID
                             aeRetrieveRequest aeRetrive = new aeRetrieveRequest();
@@ -100,10 +95,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                                     handler.post(new Runnable() {
                                         public void run() {
                                             Log.d(TAG, "** AE Retrive ResponseCode[" + resmsg +"]");
-                                            MQTT_Req_Topic = "/oneM2M/req/Mobius/"+ae.getAEid()+"_sub"+"/#";
-                                            MQTT_Resp_Topic = "/oneM2M/resp/Mobius/"+ae.getAEid()+"_sub"+"/xml";
-                                            //Log.d(TAG, "RTopic["+ MQTT_Req_Topic+"]");
-                                            //Log.d(TAG, "ResTopic["+ MQTT_Resp_Topic+"]");
+                                            MQTT_Req_Topic = "/oneM2M/req/Mobius2/"+ae.getAEid()+"_sub"+"/#";
+                                            MQTT_Resp_Topic = "/oneM2M/resp/Mobius2/"+ae.getAEid()+"_sub"+"/json";
+                                            Log.d(TAG, "ReqTopic["+ MQTT_Req_Topic+"]");
+                                            Log.d(TAG, "ResTopic["+ MQTT_Resp_Topic+"]");
                                         }
                                     });
                                 }
@@ -178,7 +173,6 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         @Override
         public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
             Log.d(TAG, "onFailure");
-            MQTT_Create(true);
         }
     };
     /* MQTT Broker Message Received */
@@ -194,28 +188,21 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             Log.d(TAG, "messageArrived");
 
             textViewData.setText("");
-            textViewData.setText("**** MQTT CO2 실시간 조회 ****\r\n\r\n" + message.toString().replaceAll("\t|\n", ""));
-            //Log.d(TAG, "topic:" + topic);
-            //Log.d(TAG, "ResMessage:" + message.toString());
+            textViewData.setText("**** MQTT CO2 실시간 조회 ****\r\n\r\n" + message.toString().replaceAll(",", "\n"));
+            Log.d(TAG, "Notify ResMessage:" + message.toString());
+
+            /* Json Type Response Parsing */
             String retrqi = MqttClientRequestParser.notificationJsonParse(message.toString());
+            Log.d(TAG, "RQI["+ retrqi +"]");
+
             String responseMessage = MqttClientRequest.notificationResponse(retrqi);
+            Log.d(TAG, "Recv OK ResMessage ["+responseMessage+"]");
 
-            /* xml parsing
-            ArrayList<String> mqttMessage = new ArrayList<String>();
-
-            Log.d(TAG, "ResMessage:" + message.toString());
-
-            mqttMessage = MqttClientRequestParser.notificationParse(message.toString());
-
-            Log.d(TAG, "***************************");
-            String responseMessage = MqttClientRequest.notificationResponse(mqttMessage);
-            */
-            //Log.d(TAG, "MQTT Resp["+responseMessage+"]");
-            /* Make xml for MQTT Response Message */
-            MqttMessage resmessage = new MqttMessage(responseMessage.getBytes());
+            /* Make json for MQTT Response Message */
+            MqttMessage res_message = new MqttMessage(responseMessage.getBytes());
 
             try {
-                mqttClient.publish(MQTT_Resp_Topic, resmessage);
+                mqttClient.publish(MQTT_Resp_Topic, res_message);
             } catch (MqttException e) {
                 e.printStackTrace();
             }
@@ -228,7 +215,6 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     };
     @Override
     public void onClick(View v) {
-
         switch (v.getId()) {
             case R.id.btnRetrieve: {
                 RetrieveRequest req = new RetrieveRequest();
@@ -252,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         public void getResponseBody(final String msg) {
                             handler.post(new Runnable() {
                                 public void run() {
-                                    textViewData.setText("************** LED RED 제어(켜짐) *************\r\n\r\n" + msg);
+                                    textViewData.setText("************** LED Green 제어(켜짐) *************\r\n\r\n" + msg);
                                 }
                             });
                         }
@@ -264,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         public void getResponseBody(final String msg) {
                             handler.post(new Runnable() {
                                 public void run() {
-                                    textViewData.setText("************** LED Green 제어(켜짐) **************\r\n\r\n" + msg);
+                                    textViewData.setText("************** LED Green 제어(꺼짐) **************\r\n\r\n" + msg);
                                 }
                             });
                         }
@@ -280,19 +266,19 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         public void getResponseBody(final String msg) {
                             handler.post(new Runnable() {
                                 public void run() {
-                                    textViewData.setText("************** LED Blue 제어(껴짐) *************\r\n\r\n" + msg);
+                                    textViewData.setText("************** LED BLUE 제어(켜짐) *************\r\n\r\n" + msg);
                                 }
                             });
                         }
                     });
                     req.start();
                 } else {
-                    ControlRequest req = new ControlRequest("0");
+                    ControlRequest req = new ControlRequest("4");
                     req.setReceiver(new IReceived() {
                         public void getResponseBody(final String msg) {
                             handler.post(new Runnable() {
                                 public void run() {
-                                    textViewData.setText("************** LED ALL 제어(꺼짐) **************\r\n\r\n" + msg);
+                                    textViewData.setText("************** LED BLUE 제어(꺼짐) **************\r\n\r\n" + msg);
                                 }
                             });
                         }
@@ -324,7 +310,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     class RetrieveRequest extends Thread {
         private final Logger LOG = Logger.getLogger(RetrieveRequest.class.getName());
         private IReceived receiver;
-        private String ContainerName = "co2";
+        private String ContainerName = "cnt-co2";
 
         public RetrieveRequest(String containerName) {
             this.ContainerName = containerName;
@@ -372,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     class ControlRequest extends Thread {
         private final Logger LOG = Logger.getLogger(ControlRequest.class.getName());
         private IReceived receiver;
-        private String container_name = "led";
+        private String container_name = "cnt-led";
 
         public ContentInstanceObject contentinstance;
         public ControlRequest(String comm) {
@@ -426,7 +412,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             }
         }
     }
-    /* Reqeust AE Creation */
+    /* Request AE Creation */
     class aeCreateRequest extends Thread {
         private final Logger LOG = Logger.getLogger(aeCreateRequest.class.getName());
         String TAG = aeCreateRequest.class.getName();
@@ -455,7 +441,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                 conn.setRequestProperty("Content-Type", "application/vnd.onem2m-res+xml;ty=2");
                 conn.setRequestProperty("Accept", "application/xml");
                 conn.setRequestProperty("locale", "ko");
-                conn.setRequestProperty("X-M2M-Origin", "S");
+                conn.setRequestProperty("X-M2M-Origin", "S"+ae.getappName());
                 conn.setRequestProperty("X-M2M-RI", "12345");
                 conn.setRequestProperty("X-M2M-NM", ae.getappName() );
 
@@ -543,7 +529,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                     ParseElementXml pxml = new ParseElementXml();
                     aei = pxml.GetElementXml(resp, "aei");
                     ae.setAEid( aei );
-                    Log.d(TAG, "Retrieve Get AEID[" + aei + "]");
+                    //Log.d(TAG, "Retrieve Get AEID[" + aei + "]");
                     in.close();
                 }
                 if (responseCode != 0) {
@@ -559,7 +545,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     class SubscribeResource extends Thread {
         private final Logger LOG = Logger.getLogger(SubscribeResource.class.getName());
         private IReceived receiver;
-        private String container_name = "co2"; //change to control container name
+        private String container_name = "cnt-co2"; //change to control container name
 
         public ContentSubscribeObject subscribeInstance;
         public SubscribeResource() {
