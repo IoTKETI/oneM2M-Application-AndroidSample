@@ -11,11 +11,9 @@
         android:id="@+id/linearLayoutMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        tools:ignore="UselessParent">
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,29 +29,51 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/mobius_address"
+                android:inputType="text" />
+
+            <ToggleButton
+                android:id="@+id/toggleButton_Addr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textOff="@string/addr_unset"
+                android:textOn="@string/addr_set" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnRetrieve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/btn_co2"
                 android:layout_gravity="center_horizontal|start"
-                android:layout_weight="6.60" />
+                android:layout_margin="5dp"
+                android:layout_weight="6.60"
+                android:text="@string/btn_co2" />
 
             <Switch
+                android:id="@+id/switch_mqtt"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/switch_mqtt"
+                android:layout_gravity="end"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:textColor="#0019fd"
-                android:textAlignment="center"
                 android:text="@string/btn_switch"
-                android:layout_gravity="end" />
+                android:textAlignment="center"
+                android:textColor="#0019fd" />
         </LinearLayout>
 
         <ScrollView
@@ -63,7 +83,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
-            android:layout_weight="1"
+            android:layout_weight="0.50"
             android:background="#575c72">
 
             <LinearLayout
@@ -83,35 +103,35 @@
         </ScrollView>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ToggleButton
                 android:id="@+id/btnControl_Green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:textOff="@string/btn_green_off"
-                android:textOn="@string/btn_green_on"
                 android:textColor="#356e4a"
                 android:textColorHighlight="#b34444"
-                android:textStyle="bold"
-                android:layout_margin="5dp"
-                android:layout_gravity="start" />
+                android:textOff="@string/btn_green_off"
+                android:textOn="@string/btn_green_on"
+                android:textStyle="bold" />
 
             <ToggleButton
+                android:id="@+id/btnControl_Blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnControl_Blue"
+                android:layout_gravity="end"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:textOff="@string/btn_blue_off"
-                android:textOn="@string/btn_blue_on"
                 android:textColor="#275de6"
                 android:textColorHighlight="#fa0505"
-                android:textStyle="bold"
-                android:layout_margin="5dp"
-                android:layout_gravity="end" />
+                android:textOff="@string/btn_blue_off"
+                android:textOn="@string/btn_blue_on"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

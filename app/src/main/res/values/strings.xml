@@ -8,4 +8,7 @@
     <string name="btn_green_on">Green On</string>
     <string name="btn_blue_off">Blue Off</string>
     <string name="btn_blue_on">Blue On</string>
+    <string name="mobius_address">192.168.0.135</string>
+    <string name="addr_unset">Disconnect</string>
+    <string name="addr_set">Connect</string>
 </resources>
