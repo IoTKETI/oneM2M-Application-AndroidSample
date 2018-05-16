@@ -13,8 +13,8 @@
 - We prepare and upload oneM2M-Application-AndroidSample tutorial video into webinar series
 
 ## **Wiki Page**
-Visit [wiki homepage](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki) for more guide information and here is a quick link for [oneM2M-Application-AndroidSample User Guide](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/blob/master/doc/oneM2M-Application-AndroidSample_User_Guide_ver0_5.pdf)!!
+Visit [wiki homepage](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/wiki) for more guide information and here is a quick link for [oneM2M-Application-AndroidSample User Guide](https://github.com/IoTKETI/oneM2M-Application-AndroidSample/blob/master/doc/oneM2M-Application-AndroidSample_User_Guide_v2.5.pdf)!!
 
 ## **Latest News**
-[2017 Mar]
-- oneM2M-Application-AndroidSample version 0.5 !! 
+[2018 May]
+- oneM2M-Application-AndroidSample version 2.5 !! 
